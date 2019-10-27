@@ -9,9 +9,9 @@ git clone https://github.com/lcols19/Netwhat-calculator.git
 
 ### Running the tests
 
-Two scripts are available to help : nbr_adr and tobinary. ntw_adr is not yet ready.
+Two scripts are available to help : nbr_adr and tobinary. ntw_adr is not ready as of now.
 
-nbr_adr : gives you the number of host addresses available from this IP address.<br>
+nbr_adr : gives the number of host addresses available from this IP address.<br>
 The argument is the CIDR number of this IP address.
 
 tobinary : takes a decimal number, turns it into a binary.<br>
@@ -30,6 +30,6 @@ Lacollar
 
 ## Notes
 
-These scripts have been done in order not to waste time on questions. Don't use this calculator if you don't understand any formulas behind it.
-I have yet to find a way to tell the exact adress of the network from the IP address of a router.
+These scripts have been done in order not to waste time on questions. Don't use this calculator if you don't understand any formulas behind it.<br>
+I have yet to find a way to tell the exact adress of the network from the IP address of a router.<br>
 Please report any issue you encountered.
