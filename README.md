@@ -1,4 +1,4 @@
-# netwhat-calculator
+# Netwhat-calculator
 
 ## Getting Started
 
