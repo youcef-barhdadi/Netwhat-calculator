@@ -11,7 +11,7 @@ git clone https://github.com/lcols19/Netwhat-calculator.git
 
 Two scripts are available to help : nbr_adr and tobinary. ntw_adr is not ready as of now.
 
-nbr_adr : gives the number of host addresses available on a LAN attached to a given IP address.<br>
+nbr_adr : gives the number of host addresses available on a network attached to a given IP address.<br>
 The argument is the CIDR number of this IP address.
 
 tobinary : takes a decimal number, turns it into a binary.<br>
@@ -23,7 +23,6 @@ The argument is the IP address with the CIDR.
 To run any script, type "sh [name-of-the-script].sh [argument]"
 
 ![Screenshot question](https://i.imgur.com/4xAenW5.png)
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/JSBqbV2" data-context="false" ><a href="//imgur.com/a/JSBqbV2"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 ## Author
