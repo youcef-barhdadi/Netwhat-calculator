@@ -11,16 +11,18 @@ git clone https://github.com/lcols19/Netwhat-calculator.git
 
 Two scripts are available to help : nbr_adr and tobinary. ntw_adr is not ready as of now.
 
-nbr_adr : gives the number of host addresses available from this IP address.<br>
+nbr_adr : gives the number of host addresses available on a LAN attached to a given IP address.<br>
 The argument is the CIDR number of this IP address.
 
 tobinary : takes a decimal number, turns it into a binary.<br>
 The argument is the decimal writing of the octet.
 
-ntw_adr(BETA currently working on it) : gives you the range within which the given IP address could communicate with another one.<br>
+ntw_adr(BETA currently working on it) : gives the range within which a given IP address could communicate with another one.<br>
 The argument is the IP address with the CIDR.
 
 To run any script, type "sh [name-of-the-script].sh [argument]"
+
+(https://imgur.com/a/JSBqbV2)
 
 
 ## Author
