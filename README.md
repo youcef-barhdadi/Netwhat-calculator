@@ -22,7 +22,7 @@ The argument is the IP address with the CIDR.
 
 To run any script, type "sh [name-of-the-script].sh [argument]"
 
-![Screenshot question](https://imgur.com/a/JSBqbV2)
+![Screenshot question](https://i.imgur.com/4xAenW5.png)
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/JSBqbV2" data-context="false" ><a href="//imgur.com/a/JSBqbV2"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
