@@ -25,9 +25,9 @@ To run any script, type "sh [name-of-the-script].sh [argument]"
 ![Screenshot question](https://i.imgur.com/4xAenW5.png)
 
 
-## Author
+## Authors
 
-Lacollar
+Lacollar (S19) and Ybarhdad(1337)
 
 
 ## Notes
