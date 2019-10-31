@@ -6,7 +6,7 @@
 /*   By: lacollar <lacollar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 08:39:33 by lacollar          #+#    #+#             */
-/*   Updated: 2019/10/27 17:34:14 by lacollar         ###   ########.fr       */
+/*   Updated: 2019/10/31 05:40:13 by ybarhdad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "ft_memccpy.c"
 #include "ft_substr.c"
 #include "nt_strrchr_modified.c"
+#include <string.h>
 
 int		ft_iterative_power(int nb, int power)
 {
@@ -68,42 +69,105 @@ char	*nt_print_adr(char *octet, int CIDR, int i)
 	}	
 	return (new_addr);
 }
+char *getsubmask(int cid)
+{
+	if (cid == 8)
+		return "255.0.0.0";
+	if (cid == 9)
+		return "225.128.0.0";
+	if (cid == 10)
+		return "255.192.0.0";
+	if (cid == 11)
+		return "255.224.0.0";
+	if (cid == 12)
+		return "255.240.0.0";
+	if(cid == 13)
+		return "255.248.0.0";
+	if (cid == 14)
+		return "255.252.0.0";
+	if (cid == 15)
+		return "255.254.0.0";
+	if (cid == 16)
+		return "255.255.0.0";
+	if (cid == 17)
+		return "255.255.128.0";
+	if (cid == 18)
+		return "255.255.192.0";
+	if (cid == 19)
+		return "255.255.224.0";
+	if (cid == 20)
+		return "255.255.240.0";
+	if (cid == 21)
+		return "255.255.248.0";
+	if (cid == 22)
+		return "255.255.252.0";
+	if (cid == 23)
+		return "255.255.254.0";
+	if (cid == 24)
+		return "255.255.255.0";
+	if (cid == 25)
+		return "225.255.255.128";
+	if (cid == 26)
+		return "255.255.255.192";
+	if (cid == 27)
+		return "255.255.255.224";
+	if (cid == 28)
+		return "255.255.255.240";
+	if (cid == 29)
+		return "255.255.255.252";
+	return NULL;
 
-char	*nt_ntw_adr(char *address)
+}
+void nt_ntw_adr(char *address)
 {
 	char	**octet;
 	int		CIDR;
 	char	*suffix;
 	char	*ip;
 	int		i;
+	int len = 0;
 	
 	if (!(suffix = malloc(sizeof(char) * 3)))
-		return (NULL);
-	suffix = nt_strrchr_modified(address, '/');
-	ip = ft_substr(address, 0, 13);
+		return ; 
+	suffix = nt_strrchr_modified(address, '/');	
+	len =   suffix - address - 1;
+	ip = ft_substr(address, 0, len);
 	if (!(octet = malloc(sizeof(char*) * 4)))
-		return (NULL);
+		return ;
 	octet = ft_split(ip, '.');
 	CIDR = atoi(suffix);
+	char **musk =  ft_split(getsubmask(CIDR), '.');
 	i = 0;
+	printf("network addresse  ");
 	while (i < 4)
 	{
-		nt_print_adr(octet[i], CIDR, i);
-		if (i != 0)
-			strcat(octet[i - 1], octet[i]);
+
+		int a = atoi(octet[i]) & atoi(musk[i]);
+		printf("%d%s",a,(i != 3? ".":""));
 		i++;
 	}
-	return ();
+
+
+	printf(" \nbroadcast ");
+	i = 0;
+	while  ( i < 4)
+	{	
+			int oc  = atoi(musk[i]);	
+			if (oc !=  255)
+				printf("255%s",(i != 3? ".":""));
+			else 
+				printf("%s%s",octet[i],(i != 3? ".":""));
+			i++;
+	
+	}
 }
 
 int 	main(int argc, char **argv)
 {
-    char *res;
-
+	(void)argv;
     if (argc == 2)
     {
-        res = nt_ntw_adr(argv[1]);
-		printf("%s", res);
+		nt_ntw_adr(argv[1]);
 		return (0);
     }
 	return (0);
