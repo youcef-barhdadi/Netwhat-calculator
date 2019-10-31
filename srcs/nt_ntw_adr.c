@@ -3,72 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   nt_ntw_adr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lacollar <lacollar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lacollar <lacollar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 08:39:33 by lacollar          #+#    #+#             */
-/*   Updated: 2019/10/31 05:40:13 by ybarhdad         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:21:45 by lacollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <unistd.h>
 #include "ft_split.c"
-#include "ft_itoa.c"
-#include "ft_memccpy.c"
 #include "ft_substr.c"
 #include "nt_strrchr_modified.c"
 #include <string.h>
 
-int		ft_iterative_power(int nb, int power)
-{
-	int total;
-	int x;
-
-	total = nb;
-	x = 1;
-	if (power == 0)
-		return (1);
-	if (power < 0)
-		return (0);
-	if (power == 1)
-		return (nb);
-	while (x < power)
-	{
-		total = total * nb;
-		x++;
-	}
-	return (total);
-}
-
-char	*nt_print_adr(char *octet, int CIDR, int i)
-{
-	char	*new_addr;
-	int		j;
-	int		k;
-	
-	if (!(new_addr = malloc(sizeof(char) * 17)))
-		return (NULL);
-	k = 0;
-	while (new_addr[k] && k < 4)
-	{
-		j = 0;
-		while (CIDR >= ft_iterative_power(2, i))
-		{
-			new_addr[k] = octet[j];
-			k++;
-			new_addr[k] = '.';
-			j++;
-		}
-		if (CIDR < ft_iterative_power(2, i))
-		{
-			new_addr[k] = 'X';
-			k++;
-			new_addr[k] = '.';
-		}
-		k++;
-	}	
-	return (new_addr);
-}
 char *getsubmask(int cid)
 {
 	if (cid == 8)
@@ -116,55 +63,52 @@ char *getsubmask(int cid)
 	if (cid == 29)
 		return "255.255.255.252";
 	return NULL;
-
 }
+
 void nt_ntw_adr(char *address)
 {
 	char	**octet;
-	int		CIDR;
+	char	**mask;
 	char	*suffix;
 	char	*ip;
+	int		CIDR;
 	int		i;
-	int len = 0;
+	int		len;
+	int		a;
 	
 	if (!(suffix = malloc(sizeof(char) * 3)))
 		return ; 
-	suffix = nt_strrchr_modified(address, '/');	
 	len =   suffix - address - 1;
+	suffix = nt_strrchr_modified(address, '/');	
 	ip = ft_substr(address, 0, len);
 	if (!(octet = malloc(sizeof(char*) * 4)))
 		return ;
 	octet = ft_split(ip, '.');
 	CIDR = atoi(suffix);
-	char **musk =  ft_split(getsubmask(CIDR), '.');
+	mask =  ft_split(getsubmask(CIDR), '.');
 	i = 0;
-	printf("network addresse  ");
+	printf("network address\t\t");
 	while (i < 4)
 	{
-
-		int a = atoi(octet[i]) & atoi(musk[i]);
+		a = atoi(octet[i]) & atoi(mask[i]);
 		printf("%d%s",a,(i != 3? ".":""));
 		i++;
 	}
-
-
-	printf(" \nbroadcast ");
+	printf("\nbroadcast address\t");
 	i = 0;
-	while  ( i < 4)
+	while (i < 4)
 	{	
-			int oc  = atoi(musk[i]);	
-			if (oc !=  255)
-				printf("255%s",(i != 3? ".":""));
-			else 
-				printf("%s%s",octet[i],(i != 3? ".":""));
-			i++;
-	
+		int oc  = atoi(mask[i]);	
+		if (oc !=  255)
+			printf("255%s",(i != 3? ".":""));
+		else 
+			printf("%s%s",octet[i],(i != 3? ".":""));
+		i++;
 	}
 }
 
 int 	main(int argc, char **argv)
 {
-	(void)argv;
     if (argc == 2)
     {
 		nt_ntw_adr(argv[1]);
