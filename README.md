@@ -28,7 +28,7 @@ To run any script, type "sh [name-of-the-script].sh [argument]"
 
 ## Authors
 
-Lacollar (S19) and Ybarhdad(1337)
+Lacollar (S19), Ybarhdad(1337), Ael-bahr(1337)
 
 
 ## Notes
