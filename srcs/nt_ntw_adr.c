@@ -18,6 +18,20 @@
 
 char *getsubmask(int cid)
 {
+	if (cid == 1)
+		return "128.0.0.0";
+	if (cid == 2)
+		return "192.0.0.0";
+	if (cid == 3)
+		return "224.0.0.0";
+	if (cid == 4)
+		return "240.0.0.0";
+	if (cid == 5)
+		return "248.0.0.0";
+	if (cid == 6)
+		return "252.0.0.0";
+	if (cid == 7)
+		return "254.0.0.0";
 	if (cid == 8)
 		return "255.0.0.0";
 	if (cid == 9)
@@ -28,7 +42,7 @@ char *getsubmask(int cid)
 		return "255.224.0.0";
 	if (cid == 12)
 		return "255.240.0.0";
-	if(cid == 13)
+	if (cid == 13)
 		return "255.248.0.0";
 	if (cid == 14)
 		return "255.252.0.0";
@@ -61,7 +75,13 @@ char *getsubmask(int cid)
 	if (cid == 28)
 		return "255.255.255.240";
 	if (cid == 29)
+		return "255.255.255.248";
+	if (cid == 30)
 		return "255.255.255.252";
+	if (cid == 31)
+		return "255.255.255.254";
+	if (cid == 32)
+		return "255.255.255.255";
 	return NULL;
 }
 
