@@ -26,6 +26,12 @@ To run any script, type "sh [name-of-the-script].sh [argument]"
 ![Screenshot question](https://i.imgur.com/d7zCzYv.png)
 
 
+### Issue requiring some fixing
+
+ntw_adr doesn't print the right host range
+![Screenshot question](https://i.imgur.com/ZWEHl5L.png)
+
+
 ## Authors
 
 Lacollar (S19), Ybarhdad(1337), Ael-bahr(1337)
