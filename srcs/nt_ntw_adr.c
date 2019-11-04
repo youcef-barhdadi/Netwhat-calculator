@@ -6,7 +6,7 @@
 /*   By: lacollar <lacollar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 08:39:33 by lacollar          #+#    #+#             */
-/*   Updated: 2019/11/02 02:06:03 by ybarhdad         ###   ########.fr       */
+/*   Updated: 2019/11/04 01:12:11 by ybarhdad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,6 @@ void nt_ntw_adr(char *address)
 	int		CIDR;
 	int		i;
 	int		len;
-	int		a;
-	int		*bor;
 	int		*net_bin;
 	int		*bor_bin;
 	int		*network_addr;
@@ -158,14 +156,14 @@ void nt_ntw_adr(char *address)
 	octet = ft_split(ip, '.');
 	CIDR = atoi(suffix);
 	i = 0;
-	int z = 32 - CIDR;
+	//int z = 32 - CIDR;
 	adr = to_bin(octet);
-	for (i = 0; i <= 31 - (31 - z); i++)
+	for (i = 0; i <= CIDR; i++)
 	{
 		bor_bin[i] = adr[i];
 		net_bin[i] = adr[i];
 	}
-	for (i = 31 ; i > (31- CIDR);i--)
+	for (i = CIDR   ; i <= 31  ;i++)
 	{
 		bor_bin[i] = 1;
 		net_bin[i] = 0;
@@ -174,14 +172,6 @@ void nt_ntw_adr(char *address)
 	network_addr = to_dec(net_bin);  
 	broadcast_addr = to_dec(bor_bin);
 
-
-	printf("boradcast : ");
-	i = 0;
-	while (i < 4)
-	{
-		printf("%d%s",broadcast_addr[i],(i != 3)?".":"");
-		i++;
-	}
 	i = 0;
 	printf("Network Adress :");
 	while (i < 4)
@@ -190,6 +180,13 @@ void nt_ntw_adr(char *address)
 		i++;
 	}
 	
+	printf("\nboradcast : ");
+	i = 0;
+	while (i < 4)
+	{
+		printf("%d%s",broadcast_addr[i],(i != 3)?".":"");
+		i++;
+	}
 
 }
 
